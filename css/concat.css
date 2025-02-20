@@ -1,0 +1,70 @@
+.main-box{
+    padding: 30px;
+}
+.main-box form{
+    float:left;
+}
+
+.main-box form input,
+.main-box form textarea{
+    width:400px;
+    border: 1px solid #ddd;
+
+    padding: 10px 15px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.main-box form textarea{
+    height: 200px;
+    max-width:400px;
+}
+
+.main-box form button{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+.main-box form button[type="submit"]{
+    background-color: #000;
+    color: #fff;
+}
+
+.main-box form button[type="reset"]{
+    background-color: #dddddd;
+}
+
+.map{
+    width:400px;
+    height: 400px;
+    background-color: rgb(122, 124, 242);
+    float: right;
+}
+@media screen and (max-width:768px){
+    .main-box form{
+        width:100%;
+    }
+    .main-box form input, .main-box form textarea{
+        width: 92%;
+    }
+    .map{
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:992px){
+    .main-box{
+        padding: 20px;
+    }
+
+    .main-box form input, .main-box form textarea{
+        width: 300px;
+    }
+
+    .map{
+        width: 300px;
+    }
+}

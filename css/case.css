@@ -1,0 +1,21 @@
+.pic-lists{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pic-list{
+    /* width: 31%; */
+    text-align: center;
+    margin: 20px;
+    flex-grow: 1;
+}
+.pic-list img{
+    width: 100%;
+}
+
+.pic-title{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}

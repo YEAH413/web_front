@@ -1,0 +1,44 @@
+.pic-list{
+    margin-bottom: 30px;
+}
+.pic-list .img{
+    width: 350px;
+    height: 400px;
+    float: left;
+}
+
+.picinfo{
+    float: left;
+    margin-left: 15px;
+    width:calc(100% - 365px)
+}
+
+.pic-title{
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:768px){
+    .pic-list .img{
+        width:40%;
+        height: auto;
+    }
+    .pic-list .img img{ 
+        width: 100%;
+    }
+    .picinfo{
+        margin-left: 3%;
+        width: 50%;
+    }
+
+    .pic-title{
+        margin-top: 0;
+    }
+
+    .pic-desc{
+        height: 105px;
+        overflow: hidden;
+    }
+}
