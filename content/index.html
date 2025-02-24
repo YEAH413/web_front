@@ -57,8 +57,22 @@
 
 <div class="content">
     <div class="banner">
-        <div class="image">
+        <!-- <div class="image">
           
+        </div> -->
+        <div class="core1">
+            <div class="core1xia clearfix" id="core1xia">
+                <a><img src="img/bigbg1.jpg" alt=""></a>
+                <a><img src="img/bigbg2.jpg" alt=""></a>
+                <a><img src="img/bigbg3.jpg" alt=""></a>
+            </div>
+            <span class="coreleft" id="coreleft" onclick="turnLeft()">&lt;</span>
+            <span class="coreright" id="coreright" onclick="turnRight()">&gt;</span>
+            <ul class="corexia clearfix">
+                <li class="coreli coreli1" data-n="0" onclick="DianjiCoreli()"></li>
+                <li class="coreli" data-n="1" onclick="DianjiCoreli()"></li>
+                <li class="coreli" data-n="2" onclick="DianjiCoreli()"></li>
+            </ul>
         </div>
         
         <div class="right-panels">
@@ -73,33 +87,40 @@
         
     
     
-            <div class="category-bar">
-                <div class="category-left">
-                    <div class="title">个性推荐</div> <!-- 左侧部分标题 -->
-                </div>
-            
-                <div class="category-right">
-                    <!-- 第一行：线上任务 -->
-                    <div class="category-row">
-                        <div class="category-item">线上任务</div>
-                        <div class="category-item">内容创作</div>
-                        <div class="category-item">编程开发</div>
-                        <div class="category-item">咨询答疑</div>
-                        <div class="category-item">创意设计</div>
-                    </div>
-            
-                    <!-- 第二行：线下任务 -->
-                    <div class="category-row">
-                        <div class="category-item">线下任务</div>
-                        <div class="category-item">助理跑腿</div>
-                        <div class="category-item">教学辅导</div>
-                        <div class="category-item">日常生活</div>
-                        <div class="category-item">约拍化妆</div>
-                    </div>
-                </div>
+    <div class="category-bar">
+        <!-- 左侧部分 - 个性推荐 -->
+        <div class="category-left">
+            <div class="title">个性推荐</div> <!-- 左侧部分标题 -->
+        </div>
+    
+        <!-- 右侧部分 - 分类栏 -->
+        <div class="category-right">
+            <!-- 第一行：线上任务 -->
+            <div class="category-row">
+                <div class="category-item">线上任务</div>
+                <div class="category-item">内容创作</div>
+                <div class="category-item">编程开发</div>
+                <div class="category-item">咨询答疑</div>
+                <div class="category-item">创意设计</div>
             </div>
-            
-            
+    
+            <!-- 第二行：线下任务 -->
+            <div class="category-row">
+                <div class="category-item">线下任务</div>
+                <div class="category-item">助理跑腿</div>
+                <div class="category-item">教学辅导</div>
+                <div class="category-item">日常生活</div>
+                <div class="category-item">约拍化妆</div>
+            </div>
+        </div>
+    
+        <!-- 新增的板块部分，位于右侧 -->
+        <div class="extra-panel">
+            <!-- 这里放置您想展示的内容，例如额外的推荐板块等 -->
+            <p>（宣传短句）帮派！助你结束烦恼！！！</p>
+        </div>
+    </div>
+    
             <div class="task">
                 <div class="task-item">
                     <div class="task-item-img"><img src="img/task1.jpg" alt="任务图片"></div>
@@ -260,6 +281,104 @@
         <footer class="center">
             Copyright &copy; 2024 XXXXXXXX公司版权所有 <!-- 显示版权信息 -->
         </footer>
+
+        <script>//宣传轮播图
+            var oLeft=document.getElementById('coreleft')
+            var oRight=document.getElementById('coreright')
+            var oImgList=document.getElementById('core1xia')
+            var index=0
+            var lock=true
+    
+            function turnRight(){
+                if(lock == false) return
+    
+                index++
+                oImgList.style.left= index * -520 + 'px'
+                oImgList.style.transition="0.5s"
+                if(index==4){
+                    index=0
+                    setTimeout(()=>{
+                        oImgList.style.left=0
+                        oImgList.style.transition="none"
+                    },500)
+                }
+                setCoreli()
+    
+                lock=false
+                setTimeout(()=>{
+                    lock = true
+                },500)
+            }
+            function turnLeft(){
+                if(lock == false) return
+    
+                index--
+                if(index==-1){
+                    oImgList.style.left= 4 * -520 + 'px'
+                    oImgList.style.transition="none"
+                    index=3
+                    setTimeout(()=>{
+                        oImgList.style.left= index * -520 + 'px'
+                        oImgList.style.transition="0.5s"
+                    },0)
+                }
+                else{
+                    oImgList.style.left= index * -520 + 'px'
+                }
+                setCoreli()
+    
+                lock=false
+                setTimeout(()=>{
+                    lock = true
+                },500)
+            }
+    
+            const coreli=document.querySelectorAll('.coreli')
+            function setCoreli(){
+                for(var i=0; i<coreli.length; i++){
+                    if(i==index){
+                        coreli[i].classList.add('coreli1')
+                    }else{
+                        coreli[i].classList.remove('coreli1')
+                    }
+                }
+            }
+            function DianjiCoreli(){
+                var n=event.target.getAttribute('data-n')
+                index=n
+                setCoreli()
+                oImgList.style.left= index * -520 + 'px'
+            }
+    
+            var timer=setInterval(turnRight, 1500)
+            var box=document.querySelector(".core1")
+            box.onmouseover=function(){
+                clearInterval(timer)
+            }
+            box.onmouseout=function(){
+                clearInterval(timer)
+                timer=setInterval(turnRight, 1500)
+            }
+        </script>
+        
+        <script>
+            var map = new BMapGL.Map("mapholder");
+            var point = new BMapGL.Point(116.404, 39.915);
+            map.centerAndZoom(point, 15);
+    
+            var dx1=document.querySelector(".bj")
+            function Xianshi(){
+                dx1.style.display="block"
+                dx2.style.display="block"
+            }
+    
+            var dx1=document.querySelector(".modal")
+            var dx2=document.querySelector("#mapholder")
+            function Xiaoshi(){
+                dx1.style.display="none"
+                dx2.style.display="none"
+            }
+        </script>
   
 </div>
 
